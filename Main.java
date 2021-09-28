@@ -1,5 +1,20 @@
 import java.util.Scanner;
 
+class ConsoleColors {
+    // Reset
+    public static final String RESET = "\033[0m";  // Text Reset
+
+    // Regular Colors
+    public static final String BLACK = "\033[0;30m";   // BLACK
+    public static final String RED = "\033[0;31m";     // RED
+    public static final String GREEN = "\033[0;32m";   // GREEN
+    public static final String YELLOW = "\033[0;33m";  // YELLOW
+    public static final String BLUE = "\033[0;34m";    // BLUE
+    public static final String PURPLE = "\033[0;35m";  // PURPLE
+    public static final String CYAN = "\033[0;36m";    // CYAN
+    public static final String WHITE = "\033[0;37m";   // WHITE
+}
+
 class Main
 {
   public static void main(String[] args) 
@@ -11,44 +26,61 @@ class Main
     switch (userSelection)
     {
       case 1:
+      //Creating 2D array (Challenge)
       int [][] multiplicationArray = {{1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}, {1,2,3,4,5,6,7,8,9,10}};
       System.out.print("  ");
-      
+      //Horizontal Line Top Creation
       for (int i = 0; i < 10; i++)
       {
         System.out.print("   " + multiplicationArray[i][i]);
       }
-      
+      // Vertical Line Creation
       for (int x = 0; x < 10; x++)
       {
         System.out.print("\n " + multiplicationArray[x][x] + "  ");
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) // Digits After placeholder
         {
-          if (x != 9)
+          if (x != 9) //Check if not in 10s
           {
-            if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 10)
+            if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 10) //check number of digits
             {
-              System.out.print(" " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  ");
+              if (multiplicationArray[x][x] == multiplicationArray[i][i])  //check for perfect square
+              {
+                System.out.print(ConsoleColors.RED + " " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  " + ConsoleColors.RESET);
+              }
+              else //if not perfect square
+              {
+                System.out.print(" " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  ");
+              }
             }
-            else
+            else //check for number of digits
             {
-              System.out.print(" " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + " ");
+              if (multiplicationArray[x][x] == multiplicationArray[i][i]) //check for perfect square
+              {
+                System.out.print(ConsoleColors.RED + " " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + " " + ConsoleColors.RESET);
+              }
+              else //if not perfect square
+              {
+                System.out.print(" " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + " ");
+              }
             }
           }
-          else
+          else //not in 10s
           {
-            if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 100)
+            if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 100) //check for perfect sqaure and less then 100
             {
               System.out.print("" + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  " );
             }
-            else
+            else // if equal to 100
             {
-              System.out.print("" + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  " );
+              System.out.print(ConsoleColors.RED + "" + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  " + ConsoleColors.RESET);
             }
           }
-        
         }
       }
+      break;
+      case 2:
+
       
       
       
