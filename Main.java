@@ -32,12 +32,12 @@ class Main
       //Horizontal Line Top Creation
       for (int i = 0; i < 10; i++)
       {
-        System.out.print("   " + multiplicationArray[i][i]);
+        System.out.print(ConsoleColors.YELLOW + "   " + multiplicationArray[i][i] + ConsoleColors.RESET);
       }
       // Vertical Line Creation
       for (int x = 0; x < 10; x++)
       {
-        System.out.print("\n " + multiplicationArray[x][x] + "  ");
+        System.out.print(ConsoleColors.YELLOW + "\n " + multiplicationArray[x][x] + "  " + ConsoleColors.RESET);
         for (int i = 0; i < 10; i++) // Digits After placeholder
         {
           if (x != 9) //Check if not in 10s
@@ -79,7 +79,52 @@ class Main
         }
       }
       break;
-      case 2:
+      case 2: // case for addition table
+      System.out.println();
+      System.out.print("   ");
+      for (int i = 0; i < 11; i++) // printing horziontal top line
+      {
+        System.out.print(ConsoleColors.YELLOW + "   " + i + "   " + ConsoleColors.RESET);
+      }
+      
+      for (int i = 0; i < 101; i = i + 10) // pritning vertical side line
+      {
+        System.out.print(ConsoleColors.YELLOW + "\n " + i + " " + ConsoleColors.RESET);
+        for (int x = 0; x < 11; x++) // printing inner values
+        {
+          if (x+i < 10) //check for single digits
+          {
+            System.out.print("   " + (x+i) + "   ");
+          }
+          else if(x+i == 10 && i == 0) //check for space between 9 and 10
+          {
+            System.out.print("   " + (x+i) + "  ");
+          }
+          else if (x+i == 99) // check for space between 99 and 100
+          {
+            System.out.print("  " + (x+i) + "    ");
+          }
+          else if (x+i < 100 && x+i > 9) // check for double digits
+          {
+            System.out.print("  " + (x+i) + "   ");
+          }
+          else if (x+i > 99) // check for triple digits
+          {
+            if (i == 9) // check if in row 90
+            {
+              System.out.print("" + (x+i) + "");
+            }
+            else // if not in row 90
+            {
+              System.out.print(" " + (x+i) + "   ");
+            }
+          }
+        }
+      }
+      break;
+      case 3: // case for AND table
+
+      
 
       
       
