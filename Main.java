@@ -20,7 +20,11 @@ class Main
   public static void main(String[] args) 
   {
     Scanner input = new Scanner (System.in);
-    System.out.println("Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Logarithmic Table \n 6. Pascal Triangle");
+    boolean[] conditions1 =  {true, true, false, false};//boolean/char arrays declaration and defintion for AND and OR tables
+    boolean[] conditions2 =  {true, false, true, false};
+    char[] sign1 = {'T', 'T', 'F', 'F'};
+    char[] sign2 = {'T', 'F', 'T', 'F'};
+    System.out.println("Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Remainder Table \n 6. Pascal Triangle");
     int userSelection;
     userSelection = Integer.parseInt(input.nextLine());
     switch (userSelection)
@@ -78,7 +82,7 @@ class Main
           }
         }
       }
-      break;
+      //break;
       case 2: // case for addition table
       System.out.println();
       System.out.print("   ");
@@ -121,8 +125,96 @@ class Main
           }
         }
       }
-      break;
+      //break;
       case 3: // case for AND table
+      System.out.println();
+      System.out.println(ConsoleColors.YELLOW + "Condition 1" + "        " + "Condition 2" + "        " + "AND" + ConsoleColors.RESET);
+      for (int i = 0; i < 4;i++)
+      {
+        System.out.print("\n     " + sign1[i] + "                  " + sign2[i] + "              " );
+        
+        if (conditions1[i] == true && conditions2[i] == true)
+        {
+          System.out.print("T");
+        }
+        else
+        {
+          System.out.print("F");
+        }
+      }
+      //break;
+      case 4:
+      System.out.println();
+      System.out.println(ConsoleColors.YELLOW + "Condition 1" + "        " + "Condition 2" + "        " + "OR" + ConsoleColors.RESET);
+      for (int i = 0; i < 4;i++)
+      {
+        System.out.print("\n     " + sign1[i] + "                  " + sign2[i] + "              " );
+        
+        if (conditions1[i] == true || conditions2[i] == true)
+        {
+          System.out.print("T");
+        }
+        else
+        {
+          System.out.print("F");
+        }
+      }
+      //break;
+      case 5:
+      System.out.println();
+      System.out.print("    ");
+      for (int i = 1; i < 11; i++)
+      {
+        System.out.print(ConsoleColors.YELLOW + " " + i + "   " + ConsoleColors.RESET);
+      }
+      for (int i = 1; i < 11; i++)
+      {
+        System.out.print(ConsoleColors.YELLOW + "\n " + i + " " + ConsoleColors.RESET);
+        for (int x = 1; x < 11;x++)
+        {
+          if (i == 10)
+          {
+            if (x == i)
+            {
+              System.out.print(ConsoleColors.RED + " " + x%i + "   " + ConsoleColors.RESET);
+            }
+            else
+            {
+              System.out.print(" " + x%i + "   ");
+            }
+          }
+          else
+          {
+            if (x == i)
+            {
+              System.out.print(ConsoleColors.RED + "  " + x%i + "  " + ConsoleColors.RESET);
+            }
+            else
+            {
+              System.out.print("  " + x%i + "  ");
+            }
+          }
+          
+        }
+      }
+      //break;15
+      case 6:
+      int[] triangleArray = new int [15];
+      triangleArray[0] = 1;
+      triangleArray[triangleArray.length -1] = 1;
+      System.out.println();
+      for (int i = 0; i < 6; i++)
+      {
+        
+      }
+      
+
+
+
+
+
+
+      }
 
       
 
@@ -142,6 +234,6 @@ class Main
 
 
   }
-}
+
   
     
