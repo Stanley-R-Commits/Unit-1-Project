@@ -40,89 +40,56 @@ class Main {
     switch (userSelection) {
       case '1': // Multiplication Table
         // Creating 2D array (Challenge)
-        int[][] multiplicationArray = { { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } };
-        System.out.print("  ");
-        // Horizontal Line Top Creation
-        for (int i = 0; i < 10; i++) {
-          System.out.print(ConsoleColors.YELLOW + "   " + multiplicationArray[i][i] + ConsoleColors.RESET);
-        }
-        // Vertical Line Creation
-        for (int x = 0; x < 10; x++) {
-          System.out.print(ConsoleColors.YELLOW + "\n " + multiplicationArray[x][x] + "  " + ConsoleColors.RESET);
-          for (int i = 0; i < 10; i++){ // Digits After placeholder
-            if (x != 9) // Check if not in 10s
+        int[][] multiArr = new int [11][11];
+        for (int i = 0; i < 11; i++)
+        {
+          System.out.print(ConsoleColors.YELLOW + "\n");
+          System.out.printf("%5d", i);
+          System.out.print(ConsoleColors.RESET);
+          for (int z = 1; z < 11; z++)
+          {
+            if (i == 0)
             {
-              if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 10) // check number of digits
+              System.out.print(ConsoleColors.YELLOW);
+              System.out.printf("%5d", z);
+              System.out.print(ConsoleColors.RESET);
+            }
+            else
+            {
+              multiArr[i][z] = i*z;
+              if (i == z)
               {
-                if (multiplicationArray[x][x] == multiplicationArray[i][i]) // check for perfect square
-                {
-                  System.out.print(ConsoleColors.RED + " " + (multiplicationArray[x][x] * multiplicationArray[i][i])
-                      + "  " + ConsoleColors.RESET);
-                } else // if not perfect square
-                {
-                  System.out.print(" " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  ");
-                }
-              } else // check for number of digits
-              {
-                if (multiplicationArray[x][x] == multiplicationArray[i][i]) // check for perfect square
-                {
-                  System.out.print(ConsoleColors.RED + " " + (multiplicationArray[x][x] * multiplicationArray[i][i])
-                      + " " + ConsoleColors.RESET);
-                } else // if not perfect square
-                {
-                  System.out.print(" " + (multiplicationArray[x][x] * multiplicationArray[i][i]) + " ");
-                }
+                System.out.print(ConsoleColors.RED);
+                System.out.printf("%5d", multiArr[i][z]);
+                System.out.print(ConsoleColors.RESET);
               }
-            } else // not in 10s
-            {
-              if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 100) // check for perfect sqaure and less then 100
+              else
               {
-                System.out.print("" + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  ");
-              } else // if equal to 100
-              {
-                System.out.print(ConsoleColors.RED + "" + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  "
-                    + ConsoleColors.RESET);
+                System.out.printf("%5d", multiArr[i][z]);
               }
             }
           }
         }
         break;
       case '2': // case for addition table
-        System.out.println();
-        System.out.print("   ");
-        for (int i = 0; i < 11; i++) // printing horziontal top line
+        for (int i = 0; i < 101; i = i+10)
         {
-          System.out.print(ConsoleColors.YELLOW + "   " + i + "   " + ConsoleColors.RESET);
-        }
-
-        for (int i = 0; i < 101; i = i + 10) // pritning vertical side line
-        {
-          System.out.print(ConsoleColors.YELLOW + "\n " + i + " " + ConsoleColors.RESET);
-          for (int x = 0; x < 11; x++) // printing inner values
+          System.out.print(ConsoleColors.YELLOW + "\n");
+          System.out.printf("%5d", i);
+          System.out.print(ConsoleColors.RESET);
+          for (int z = 1; z < 11; z++)
           {
-            if (x + i < 10) // check for single digits
+            if (i == 0)
             {
-              System.out.print("   " + (x + i) + "   ");
-            } else if (x + i == 10 && i == 0) // check for space between 9 and 10
-            {
-              System.out.print("   " + (x + i) + "  ");
-            } else if (x + i == 99) // check for space between 99 and 100
-            {
-              System.out.print("  " + (x + i) + "    ");
-            } else if (x + i < 100 && x + i > 9) // check for double digits
-            {
-              System.out.print("  " + (x + i) + "   ");
-            } else if (x + i > 99) // check for triple digits
-            {
-              if (i == 9) // check if in row 90
-              {
-                System.out.print("" + (x + i) + "");
-              } else // if not in row 90
-              {
-                System.out.print(" " + (x + i) + "   ");
-              }
+              System.out.print(ConsoleColors.YELLOW);
+              System.out.printf("%5d", z);
+              System.out.print(ConsoleColors.RESET);
             }
-          }
+            else
+            {
+              System.out.printf("%5d", i+z);
+            }
+          }   
         }
         break;
       case '3': // case for AND table
@@ -152,28 +119,32 @@ class Main {
         }
         break;
       case '5': // remainder table
-        System.out.println();
-        System.out.print("    ");
-        for (int i = 1; i < 11; i++) { // outputting top row placeholder
-          System.out.print(ConsoleColors.YELLOW + " " + i + "   " + ConsoleColors.RESET);
-        }
-        for (int i = 1; i < 11; i++) { // outputting vertical row placeholder
-          System.out.print(ConsoleColors.YELLOW + "\n " + i + " " + ConsoleColors.RESET);
-          for (int x = 1; x < 11; x++) { // outputting
-            if (i == 10) { // if in 10 row
-              if (x == i) { // if perfect remainder
-                System.out.print(ConsoleColors.RED + " " + x % i + "   " + ConsoleColors.RESET);
-              } else { // if not perfect remainder
-                System.out.print(" " + x % i + "   ");
+        for (int i = 0; i < 11; i++)
+        {
+          System.out.print(ConsoleColors.YELLOW + "\n");
+          System.out.printf("%5d", i);
+          System.out.print(ConsoleColors.RESET);
+          for (int z = 1; z < 11; z++)
+          {
+            if (i == 0)
+            {
+              System.out.print(ConsoleColors.YELLOW);
+              System.out.printf("%5d", z);
+              System.out.print(ConsoleColors.RESET);
+            }
+            else
+            {
+              if (i == z)
+              {
+                System.out.print(ConsoleColors.RED);
+                System.out.printf("%5d", z%i);
+                System.out.print(ConsoleColors.RESET);
               }
-            } else { // if not in 10 row
-              if (x == i) { // if perfect remainder
-                System.out.print(ConsoleColors.RED + "  " + x % i + "  " + ConsoleColors.RESET);
-              } else { // if not perfect remainder
-                System.out.print("  " + x % i + "  ");
+              else
+              {
+                System.out.printf("%5d", z%i);
               }
             }
-
           }
         }
         break;
