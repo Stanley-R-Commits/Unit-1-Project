@@ -1,6 +1,7 @@
 import java.util.Scanner;
-
-class ConsoleColors {
+//Wow factor: for table placeholers, i have colored them for better view
+//Wow factor: for the pascal triangle, I found 
+class ConsoleColors { //class for Colors
   // Reset
   public static final String RESET = "\033[0m"; // Text Reset
 
@@ -18,22 +19,28 @@ class ConsoleColors {
 class Main {
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
-    boolean[] conditions1 = { true, true, false, false };// boolean/char arrays declaration and defintion for AND and OR
-                                                         // tables
+    boolean[] conditions1 = { true, true, false, false };// boolean/char arrays declaration and defintion for AND and OR tables
     boolean[] conditions2 = { true, false, true, false };
     char[] sign1 = { 'T', 'T', 'F', 'F' };
     char[] sign2 = { 'T', 'F', 'T', 'F' };
+    char userSelection;
+    while (0<1)
+    {
+    System.out.print("\n");
     System.out.println(
-        "Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Remainder Table \n 6. Pascal Triangle");
-    int userSelection;
-    userSelection = Integer.parseInt(input.nextLine());
+        "Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Remainder Table \n 6. Pascal Triangle \n Press '7' to exit the program");
+    try //to prevent the error of having a 0 lengthed input
+    {
+      userSelection = input.nextLine().charAt(0);
+    }
+    catch (Exception e)
+    {
+      userSelection = 'Z';
+    }
     switch (userSelection) {
-      case 1:
+      case '1': // Multiplication Table
         // Creating 2D array (Challenge)
-        int[][] multiplicationArray = { { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
-            { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
-            { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
-            { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } };
+        int[][] multiplicationArray = { { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 } };
         System.out.print("  ");
         // Horizontal Line Top Creation
         for (int i = 0; i < 10; i++) {
@@ -42,8 +49,7 @@ class Main {
         // Vertical Line Creation
         for (int x = 0; x < 10; x++) {
           System.out.print(ConsoleColors.YELLOW + "\n " + multiplicationArray[x][x] + "  " + ConsoleColors.RESET);
-          for (int i = 0; i < 10; i++) // Digits After placeholder
-          {
+          for (int i = 0; i < 10; i++){ // Digits After placeholder
             if (x != 9) // Check if not in 10s
             {
               if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 10) // check number of digits
@@ -69,8 +75,7 @@ class Main {
               }
             } else // not in 10s
             {
-              if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 100) // check for perfect sqaure and less
-                                                                                 // then 100
+              if ((multiplicationArray[x][x] * multiplicationArray[i][i]) < 100) // check for perfect sqaure and less then 100
               {
                 System.out.print("" + (multiplicationArray[x][x] * multiplicationArray[i][i]) + "  ");
               } else // if equal to 100
@@ -81,8 +86,8 @@ class Main {
             }
           }
         }
-        // break;
-      case 2: // case for addition table
+        break;
+      case '2': // case for addition table
         System.out.println();
         System.out.print("   ");
         for (int i = 0; i < 11; i++) // printing horziontal top line
@@ -119,36 +124,34 @@ class Main {
             }
           }
         }
-        // break;
-      case 3: // case for AND table
+        break;
+      case '3': // case for AND table
         System.out.println();
         System.out.println(ConsoleColors.YELLOW + "Condition 1" + "        " + "Condition 2" + "        " + "AND"
-            + ConsoleColors.RESET);
-        for (int i = 0; i < 4; i++) {
+            + ConsoleColors.RESET); //outputting table placeholders
+        for (int i = 0; i < 4; i++) { //outputting values
           System.out.print("\n     " + sign1[i] + "                  " + sign2[i] + "              ");
-
-          if (conditions1[i] == true && conditions2[i] == true) {
+          if (conditions1[i] == true && conditions2[i] == true) { //or node
             System.out.print("T");
           } else {
             System.out.print("F");
           }
         }
-        // break;
-      case 4:
+        break;
+      case '4': // case for OR table
         System.out.println();
         System.out.println(ConsoleColors.YELLOW + "Condition 1" + "        " + "Condition 2" + "        " + "OR"
-            + ConsoleColors.RESET);
-        for (int i = 0; i < 4; i++) {
+            + ConsoleColors.RESET); //outputing table placeholders
+        for (int i = 0; i < 4; i++) { //outputing values
           System.out.print("\n     " + sign1[i] + "                  " + sign2[i] + "              ");
-
-          if (conditions1[i] == true || conditions2[i] == true) {
+          if (conditions1[i] == true || conditions2[i] == true) { //or node
             System.out.print("T");
           } else {
             System.out.print("F");
           }
         }
-        // break;
-      case 5: // remainder table
+        break;
+      case '5': // remainder table
         System.out.println();
         System.out.print("    ");
         for (int i = 1; i < 11; i++) { // outputting top row placeholder
@@ -157,24 +160,24 @@ class Main {
         for (int i = 1; i < 11; i++) { // outputting vertical row placeholder
           System.out.print(ConsoleColors.YELLOW + "\n " + i + " " + ConsoleColors.RESET);
           for (int x = 1; x < 11; x++) { // outputting
-            if (i == 10) {
-              if (x == i) {
+            if (i == 10) { // if in 10 row
+              if (x == i) { // if perfect remainder
                 System.out.print(ConsoleColors.RED + " " + x % i + "   " + ConsoleColors.RESET);
-              } else {
+              } else { // if not perfect remainder
                 System.out.print(" " + x % i + "   ");
               }
-            } else {
-              if (x == i) {
+            } else { // if not in 10 row
+              if (x == i) { // if perfect remainder
                 System.out.print(ConsoleColors.RED + "  " + x % i + "  " + ConsoleColors.RESET);
-              } else {
+              } else { // if not perfect remainder
                 System.out.print("  " + x % i + "  ");
               }
             }
 
           }
         }
-        // break;
-      case 6: // pascal triangle
+        break;
+      case '6': // pascal triangle
         int numofRows;
         int baseNum = 1;
         int counter = 0;
@@ -187,16 +190,23 @@ class Main {
             System.out.print("     "); // adding spacing
           }
           counter++;
-          for (int x = 1; x < i + 1; x++) {            
+          for (int x = 1; x < i + 1; x++) {
             System.out.printf("%10d", baseNum);
             baseNum = baseNum * (i - x) / x; // calculating output for next number
           }
           System.out.print("\n");
         }
-
+        break;
+      case '7':
+        System.exit(0);
+        break;
+      default:
+        System.out.println("ERROR: Bad Input");
+      break;
 
     }
 
+  }
   }
 
 }
