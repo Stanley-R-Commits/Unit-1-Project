@@ -1,6 +1,8 @@
 import java.util.Scanner;
 //Wow factor: for table placeholers, i have colored them for better view
-//Wow factor: for the pascal triangle, I found 
+//Wow factor: for the using the spacing function like %5d for proper spacing instead of manually adding sapces
+//Wow factor: I used a try and catch statement to prevent errors when inputing an answer
+
 class ConsoleColors { // class for Colors
   public static final String RESET = "\033[0m"; // Text Reset
   public static final String RED = "\033[0;31m"; // RED
@@ -9,10 +11,8 @@ class ConsoleColors { // class for Colors
 class Main {
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
-    boolean[] conditions1 = { true, true, false, false };// boolean/char arrays declaration and defintion for AND and OR table
+    boolean[] conditions1 = { true, true, false, false };// boolean arrays declaration and defintion for AND and OR table
     boolean[] conditions2 = { true, false, true, false };
-    char[] sign1 = { 'T', 'T', 'F', 'F' };
-    char[] sign2 = { 'T', 'F', 'T', 'F' };
     char userSelection;
     while (0 < 1) {
       System.out.print("\n");
