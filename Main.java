@@ -17,7 +17,7 @@ class Main {
     while (0 < 1) {
       System.out.print("\n");
       System.out.println(
-          "Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Remainder Table \n 6. Pascal Triangle \n Press '7' to exit the program");
+          "Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Remainder Table \n 6. Pascal Triangle \n Enter '7' to exit the program");
       try // to prevent the error of having a 0 lengthed input
       {
         userSelection = input.nextLine().charAt(0);
@@ -92,21 +92,21 @@ class Main {
           }
           break;
         case '5': // remainder table
-          for (int i = 0; i < 11; i++) {
+          for (int i = 0; i < 11; i++) {//loop for column
             System.out.print(ConsoleColors.YELLOW + "\n");
             System.out.printf("%5d", i);
             System.out.print(ConsoleColors.RESET);
-            for (int z = 1; z < 11; z++) {
-              if (i == 0) {
+            for (int z = 1; z < 11; z++) { //loop for row
+              if (i == 0) { //if a placeholder row
                 System.out.print(ConsoleColors.YELLOW);
                 System.out.printf("%5d", z);
                 System.out.print(ConsoleColors.RESET);
-              } else {
-                if (i == z) {
+              } else { //if not a placeholder row
+                if (i == z) { //if perfect remainder
                   System.out.print(ConsoleColors.RED);
                   System.out.printf("%5d", z % i);
                   System.out.print(ConsoleColors.RESET);
-                } else {
+                } else { //if not perfect remainder
                   System.out.printf("%5d", z % i);
                 }
               }
@@ -122,21 +122,21 @@ class Main {
           for (int i = 1; i < numofRows + 1; i++) // outputing row
           {
             baseNum = 1;
-            for (int x = 0; x < numofRows + 1 - counter; x++) {
+            for (int x = 0; x < numofRows + 1 - counter; x++) { //loop for column
               System.out.print("     "); // adding spacing
             }
             counter++;
             for (int x = 1; x < i + 1; x++) {
-              System.out.printf("%10d", baseNum);
+              System.out.printf("%10d", baseNum); //loop for row
               baseNum = baseNum * (i - x) / x; // calculating output for next number
             }
             System.out.print("\n");
           }
           break;
-        case '7':
+        case '7': //case for exiting program
           System.exit(0);
           break;
-        default:
+        default: //case for bad input
           System.out.println("ERROR: Bad Input");
           break;
       }
