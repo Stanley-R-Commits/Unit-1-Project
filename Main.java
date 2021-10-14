@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 //Wow factor: for table placeholers, i have colored them for better view
 //Wow factor: for the using the spacing function like %5d for proper spacing instead of manually adding sapces
 //Wow factor: I used a try and catch statement to prevent errors when inputing an answer
@@ -14,7 +15,7 @@ class Main {
     boolean[] conditions1 = { true, true, false, false };// boolean arrays declaration and defintion for AND and OR table
     boolean[] conditions2 = { true, false, true, false };
     char userSelection;
-    while (0 < 1) {
+    while (0 < 1) { //while loop for looping program
       System.out.print("\n");
       System.out.println(
           "Welcome to the Math/Engineering Information Centre: Would you like to view \n 1. Multiplication Table \n 2. Addition Table \n 3. Logic Table for AND Gate \n 4. Logic Table for OR Gate \n 5. Remainder Table \n 6. Pascal Triangle \n Enter '7' to exit the program");
@@ -38,7 +39,7 @@ class Main {
                 System.out.print(ConsoleColors.RESET);
               } else { //if not row 1
                 multiArr[i][z] = i * z;
-                if (i == z) { //if perfect square
+                if (Math.sqrt(i*z) == (int)Math.sqrt(i*z)) { //if perfect square
                   System.out.print(ConsoleColors.RED);
                   System.out.printf("%5d", multiArr[i][z]);
                   System.out.print(ConsoleColors.RESET);
@@ -92,6 +93,7 @@ class Main {
           }
           break;
         case '5': // remainder table
+          System.out.print("Column = Dividend, Row = Divisor");
           for (int i = 0; i < 11; i++) {//loop for column
             System.out.print(ConsoleColors.YELLOW + "\n");
             System.out.printf("%5d", i);
@@ -102,7 +104,7 @@ class Main {
                 System.out.printf("%5d", z);
                 System.out.print(ConsoleColors.RESET);
               } else { //if not a placeholder row
-                if (i == z) { //if perfect remainder
+                if (z%i == 0) { //if perfect remainder
                   System.out.print(ConsoleColors.RED);
                   System.out.printf("%5d", z % i);
                   System.out.print(ConsoleColors.RESET);
